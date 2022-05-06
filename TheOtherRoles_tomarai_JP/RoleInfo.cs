@@ -38,6 +38,7 @@ namespace TheOtherRoles_tomarai_JP
         public static RoleInfo janitor = new RoleInfo("ジャニター", Janitor.color, "<color=#FF1919FF>マフィア</color>の一員として 死体を掃除しよう", "死体を掃除しよう", RoleId.Janitor);
         public static RoleInfo morphling = new RoleInfo("モーフィング", Morphling.color, "バレないように変身しよう", "変身しよう", RoleId.Morphling);
         public static RoleInfo camouflager = new RoleInfo("カモフラージャー", Camouflager.color, "カモフラージュして皆殺しにしよう", "他の人を隠そう", RoleId.Camouflager);
+        public static RoleInfo evilHacker = new RoleInfo("EvilHacker", EvilHacker.color, "Hack systems and kill the Crewmates", "Hack to kill the Crewmates", RoleId.EvilHacker);
         public static RoleInfo vampire = new RoleInfo("ヴァンパイア", Vampire.color, "Kill the Crewmates with your bites", "敵を噛もう", RoleId.Vampire);
         public static RoleInfo eraser = new RoleInfo("イレイサー", Eraser.color, "Kill the Crewmates and erase their roles", "敵の役職を消そう", RoleId.Eraser);
         public static RoleInfo trickster = new RoleInfo("トリックスター", Trickster.color, "Use your jack-in-the-boxes to surprise others", "敵を驚かそう", RoleId.Trickster);
@@ -90,6 +91,7 @@ namespace TheOtherRoles_tomarai_JP
             janitor,
             morphling,
             camouflager,
+            evilHacker,
             vampire,
             eraser,
             trickster,
@@ -167,6 +169,7 @@ namespace TheOtherRoles_tomarai_JP
             if (p == Janitor.janitor) infos.Add(janitor);
             if (p == Morphling.morphling) infos.Add(morphling);
             if (p == Camouflager.camouflager) infos.Add(camouflager);
+            if (p == EvilHacker.evilHacker) infos.Add(evilHacker);
             if (p == Vampire.vampire) infos.Add(vampire);
             if (p == Eraser.eraser) infos.Add(eraser);
             if (p == Trickster.trickster) infos.Add(trickster);

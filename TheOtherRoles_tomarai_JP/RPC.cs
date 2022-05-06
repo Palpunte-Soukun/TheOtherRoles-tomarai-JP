@@ -32,6 +32,7 @@ namespace TheOtherRoles_tomarai_JP
         Seer,
         Morphling,
         Camouflager,
+        EvilHacker,
         Hacker,
         Tracker,
         Vampire,
@@ -101,6 +102,7 @@ namespace TheOtherRoles_tomarai_JP
         TrackerUsedTracker,
         VampireSetBitten,
         PlaceGarlic,
+        EvilHackerCreatesMadmate,
         DeputyUsedHandcuffs,
         DeputyPromotes,
         JackalCreatesSidekick,
@@ -228,6 +230,9 @@ namespace TheOtherRoles_tomarai_JP
                         break;
                     case RoleId.Camouflager:
                         Camouflager.camouflager = player;
+                        break;
+                    case RoleId.EvilHacker:
+                        EvilHacker.evilHacker = player;
                         break;
                     case RoleId.Hacker:
                         Hacker.hacker = player;
@@ -581,6 +586,17 @@ namespace TheOtherRoles_tomarai_JP
                     Tracker.tracked = player;
         }
 
+        public static void evilHackerCreatesMadmate(byte targetId) {
+            foreach (PlayerControl player in PlayerControl.AllPlayerControls) {
+                if (player.PlayerId == targetId) {
+                    player.RemoveInfected();
+                    erasePlayerRoles(player.PlayerId, true);
+                    Madmate.madmate = player;
+                    EvilHacker.canCreateMadmate = false;
+                    return;
+                }
+            }
+        }
         public static void deputyUsedHandcuffs(byte targetId)
         {
             Deputy.remainingHandcuffs--;
@@ -1044,6 +1060,9 @@ namespace TheOtherRoles_tomarai_JP
                     break;
                 case (byte)CustomRPC.DeputyPromotes:
                     RPCProcedure.deputyPromotes();
+                    break;
+                case (byte)CustomRPC.EvilHackerCreatesMadmate:
+                    RPCProcedure.evilHackerCreatesMadmate(reader.ReadByte());
                     break;
                 case (byte)CustomRPC.JackalCreatesSidekick:
                     RPCProcedure.jackalCreatesSidekick(reader.ReadByte());

@@ -152,6 +152,12 @@ namespace TheOtherRoles_tomarai_JP.Patches {
             setPlayerOutline(Sheriff.currentTarget, Sheriff.color);
         }
 
+        static void evilHackerSetTarget() {
+            if (EvilHacker.evilHacker == null || EvilHacker.evilHacker != PlayerControl.LocalPlayer) return;
+            EvilHacker.currentTarget = setTarget(true);
+            setPlayerOutline(EvilHacker.currentTarget, EvilHacker.color);
+        }
+
         static void deputySetTarget()
         {
             if (Deputy.deputy == null || Deputy.deputy != PlayerControl.LocalPlayer) return;
@@ -850,6 +856,8 @@ namespace TheOtherRoles_tomarai_JP.Patches {
                 detectiveUpdateFootPrints();
                 // Tracker
                 trackerSetTarget();
+                // EvilHacker
+                evilHackerSetTarget();
                 // Vampire
                 vampireSetTarget();
                 Garlic.UpdateAll();

@@ -350,6 +350,28 @@ namespace TheOtherRoles_tomarai_JP.Patches {
                 {
                     return false;
                 }
+
+                // Consume time to see admin map if the player is alive
+                if (!PlayerControl.LocalPlayer.Data.IsDead &&
+                    !(EvilHacker.evilHacker != null && EvilHacker.evilHacker == PlayerControl.LocalPlayer)) {
+                    // Show the grey map if players ran out of admin time.
+                    if (MapOptions.AdminTimer <= 0) {
+                        __instance.isSab = true;
+                        __instance.BackgroundColor.SetColor(Palette.DisabledGrey);
+                        return false;
+                    }
+
+                    // Consume the time via RPC
+                    MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(
+                        PlayerControl.LocalPlayer.NetId,
+                        (byte)CustomRPC.ConsumeAdminTime,
+                        Hazel.SendOption.Reliable,
+                        -1);
+                    writer.Write(__instance.timer);
+                    AmongUsClient.Instance.FinishRpcImmediately(writer);
+                    RPCProcedure.consumeAdminTime(__instance.timer);
+                }
+
                 __instance.timer = 0f;
                 players = new Dictionary<SystemTypes, List<Color>>();
                 bool commsActive = false;

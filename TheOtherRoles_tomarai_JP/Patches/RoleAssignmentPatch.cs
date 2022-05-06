@@ -5,9 +5,9 @@ using System.Linq;
 using UnhollowerBaseLib;
 using UnityEngine;
 using System;
-using static TheOtherRoles_tomarai_JP.TheOtherRoles_tomarai_JP;
+using static TheOtherRoles.TheOtherRoles;
 
-namespace TheOtherRoles_tomarai_JP.Patches {
+namespace TheOtherRoles.Patches {
     [HarmonyPatch(typeof(RoleOptionsData), nameof(RoleOptionsData.GetNumPerGame))]
     class RoleOptionsDataGetNumPerGamePatch{
         public static void Postfix(ref int __result) {
@@ -76,6 +76,7 @@ namespace TheOtherRoles_tomarai_JP.Patches {
             
             impSettings.Add((byte)RoleId.Morphling, CustomOptionHolder.morphlingSpawnRate.getSelection());
             impSettings.Add((byte)RoleId.Camouflager, CustomOptionHolder.camouflagerSpawnRate.getSelection());
+            impSettings.Add((byte)RoleId.EvilHacker, CustomOptionHolder.evilHackerSpawnRate.getSelection());
             impSettings.Add((byte)RoleId.Vampire, CustomOptionHolder.vampireSpawnRate.getSelection());
             impSettings.Add((byte)RoleId.Eraser, CustomOptionHolder.eraserSpawnRate.getSelection());
             impSettings.Add((byte)RoleId.Trickster, CustomOptionHolder.tricksterSpawnRate.getSelection());
@@ -109,7 +110,11 @@ namespace TheOtherRoles_tomarai_JP.Patches {
                 // Only add Spy if more than 1 impostor as the spy role is otherwise useless
                 crewSettings.Add((byte)RoleId.Spy, CustomOptionHolder.spySpawnRate.getSelection());
             }
-            crewSettings.Add((byte)RoleId.SecurityGuard, CustomOptionHolder.securityGuardSpawnRate.getSelection());
+
+            if (!CustomOptionHolder.evilHackerCanCreateMadmate.getBool()) {
+                // Only add Madmate if EvilHacker cannot make a Madmate
+                crewSettings.Add((byte)RoleId.Madmate, CustomOptionHolder.madmateSpawnRate.getSelection());
+            }
 
             return new RoleAssignmentData {
                 crewmates = crewmates,

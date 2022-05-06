@@ -39,6 +39,7 @@ namespace TheOtherRoles_tomarai_JP
             Seer.clearAndReload();
             Morphling.clearAndReload();
             Camouflager.clearAndReload();
+            EvilHacker.clearAndReload();
             Hacker.clearAndReload();
             Tracker.clearAndReload();
             Vampire.clearAndReload();
@@ -246,8 +247,13 @@ namespace TheOtherRoles_tomarai_JP
                 formerDeputy = null;
                 formerSheriff = null;
                 cooldown = CustomOptionHolder.sheriffCooldown.getFloat();
+                remainingShots = Mathf.RoundToInt(CustomOptionHolder.sheriffNumberOfShots.getFloat());
                 canKillNeutrals = CustomOptionHolder.sheriffCanKillNeutrals.getBool();
                 spyCanDieToSheriff = CustomOptionHolder.spyCanDieToSheriff.getBool();
+                madmateCanDieToSheriff = CustomOptionHolder.madmateCanDieToSheriff.getBool();
+                if (CustomOptionHolder.evilHackerSpawnRate.getSelection() > 0 &&
+                    CustomOptionHolder.evilHackerCanCreateMadmate.getBool())
+                    madmateCanDieToSheriff = CustomOptionHolder.createdMadmateCanDieToSheriff.getBool();
             }
         }
 
@@ -632,6 +638,35 @@ namespace TheOtherRoles_tomarai_JP
             camouflageTimer = 0f;
             cooldown = CustomOptionHolder.camouflagerCooldown.getFloat();
             duration = CustomOptionHolder.camouflagerDuration.getFloat();
+        }
+    }
+
+    public static class EvilHacker {
+        public static PlayerControl evilHacker;
+        public static Color color = Palette.ImpostorRed;
+
+        public static bool canCreateMadmate = false;
+        public static PlayerControl currentTarget;
+
+        private static Sprite buttonSprite;
+        private static Sprite madmateButtonSprite;
+
+        public static Sprite getButtonSprite() {
+            if (buttonSprite) return buttonSprite;
+            buttonSprite = DestroyableSingleton<TranslationController>.Instance.GetImage(ImageNames.AirshipAdminButton);
+            return buttonSprite;
+        }
+
+        public static Sprite getMadmateButtonSprite() {
+            if (madmateButtonSprite) return madmateButtonSprite;
+            madmateButtonSprite = Helpers.loadSpriteFromResources("TheOtherRoles.Resources.SidekickButton.png", 115f);
+            return madmateButtonSprite;
+        }
+
+        public static void clearAndReload() {
+            evilHacker = null;
+            currentTarget = null;
+            canCreateMadmate = CustomOptionHolder.evilHackerCanCreateMadmate.getBool();
         }
     }
 
@@ -1365,6 +1400,37 @@ namespace TheOtherRoles_tomarai_JP
             cooldown = CustomOptionHolder.mediumCooldown.getFloat();
             duration = CustomOptionHolder.mediumDuration.getFloat();
             oneTimeUse = CustomOptionHolder.mediumOneTimeUse.getBool();
+        }
+    }
+
+    public static class Madmate {
+        public static PlayerControl madmate;
+        public static Color color = Palette.ImpostorRed;
+
+        public static bool canEnterVents = false;
+        public static bool hasImpostorVision = false;
+        public static bool noticeImpostors = false;
+        public static bool exileCrewmate = false;
+
+        public static void clearAndReload() {
+            madmate = null;
+            CustomOption opCanEnterVents = CustomOptionHolder.madmateCanEnterVents;
+            CustomOption opHasImpostorVision = CustomOptionHolder.madmateHasImpostorVision;
+            CustomOption opNoticeImpostors = CustomOptionHolder.madmateNoticeImpostors;
+            CustomOption opExileCrewmate = CustomOptionHolder.madmateExileCrewmate;
+
+            if (CustomOptionHolder.evilHackerSpawnRate.getSelection() > 0 &&
+                CustomOptionHolder.evilHackerCanCreateMadmate.getBool()) {
+                // Madmate should be configurable from EvilHacker options if EvilHacker can make a madmate
+                opCanEnterVents = CustomOptionHolder.createdMadmateCanEnterVents;
+                opHasImpostorVision = CustomOptionHolder.createdMadmateHasImpostorVision;
+                opNoticeImpostors = CustomOptionHolder.createdMadmateNoticeImpostors;
+                opExileCrewmate = CustomOptionHolder.createdMadmateExileCrewmate;
+            }
+            canEnterVents = opCanEnterVents.getBool();
+            hasImpostorVision = opHasImpostorVision.getBool();
+            noticeImpostors = opNoticeImpostors.getBool();
+            exileCrewmate = opExileCrewmate.getBool();
         }
     }
 

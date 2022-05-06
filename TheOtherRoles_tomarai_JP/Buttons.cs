@@ -21,6 +21,8 @@ namespace TheOtherRoles_tomarai_JP
         private static CustomButton shifterShiftButton;
         private static CustomButton morphlingButton;
         private static CustomButton camouflagerButton;
+        private static CustomButton evilHackerButton;
+        private static CustomButton evilHackerCreatesMadmateButton;
         private static CustomButton portalmakerPlacePortalButton;
         private static CustomButton usePortalButton;
         private static CustomButton hackerButton;
@@ -468,6 +470,55 @@ namespace TheOtherRoles_tomarai_JP
                 true,
                 Camouflager.duration,
                 () => { camouflagerButton.Timer = camouflagerButton.MaxTimer; }
+            );
+
+            // EvilHacker button
+            evilHackerButton = new CustomButton(
+                () => {
+                    PlayerControl.LocalPlayer.NetTransform.Halt();
+                    Action<MapBehaviour> tmpAction = (MapBehaviour m) => { m.ShowCountOverlay(); };
+                    DestroyableSingleton<HudManager>.Instance.ShowMap(tmpAction);
+                    if (PlayerControl.LocalPlayer.AmOwner) {
+                        PlayerControl.LocalPlayer.MyPhysics.inputHandler.enabled = true;
+                        ConsoleJoystick.SetMode_Task();
+                    }
+                },
+                () => {
+                    return EvilHacker.evilHacker != null &&
+                      EvilHacker.evilHacker == PlayerControl.LocalPlayer &&
+                      !PlayerControl.LocalPlayer.Data.IsDead;
+                },
+                () => { return PlayerControl.LocalPlayer.CanMove; },
+                () => {},
+                EvilHacker.getButtonSprite(),
+                new Vector3(-1.8f, -0.06f, 0),
+                __instance,
+                KeyCode.F
+            );
+
+            // EvilHacker creates madmate button
+            evilHackerCreatesMadmateButton = new CustomButton(
+                () => {
+                    /*
+                     * creates madmate
+                     */
+                    MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.EvilHackerCreatesMadmate, Hazel.SendOption.Reliable, -1);
+                    writer.Write(EvilHacker.currentTarget.PlayerId);
+                    AmongUsClient.Instance.FinishRpcImmediately(writer);
+                    RPCProcedure.evilHackerCreatesMadmate(EvilHacker.currentTarget.PlayerId);
+                },
+                () => {
+                    return EvilHacker.evilHacker != null &&
+                      EvilHacker.evilHacker == PlayerControl.LocalPlayer &&
+                      EvilHacker.canCreateMadmate &&
+                      !PlayerControl.LocalPlayer.Data.IsDead;
+                },
+                () => { return EvilHacker.currentTarget && PlayerControl.LocalPlayer.CanMove; },
+                () => {},
+                EvilHacker.getMadmateButtonSprite(),
+                new Vector3(-2.7f, -0.06f, 0),
+                __instance,
+                null
             );
 
             // Hacker button

@@ -38,6 +38,14 @@ namespace TheOtherRoles_tomarai_JP {
         public static CustomOption camouflagerCooldown;
         public static CustomOption camouflagerDuration;
 
+        public static CustomOption evilHackerSpawnRate;
+        public static CustomOption evilHackerCanCreateMadmate;
+        public static CustomOption createdMadmateCanDieToSheriff;
+        public static CustomOption createdMadmateCanEnterVents;
+        public static CustomOption createdMadmateHasImpostorVision;
+        public static CustomOption createdMadmateNoticeImpostors;
+        public static CustomOption createdMadmateExileCrewmate;
+
         public static CustomOption vampireSpawnRate;
         public static CustomOption vampireKillDelay;
         public static CustomOption vampireCooldown;
@@ -318,6 +326,15 @@ namespace TheOtherRoles_tomarai_JP {
             camouflagerSpawnRate = CustomOption.Create(30, Types.Impostor, cs(Camouflager.color, "カモフラージャー"), rates, null, true);
             camouflagerCooldown = CustomOption.Create(31, Types.Impostor, "クールダウン", 30f, 10f, 60f, 2.5f, camouflagerSpawnRate);
             camouflagerDuration = CustomOption.Create(32, Types.Impostor, "持続時間", 10f, 1f, 20f, 0.5f, camouflagerSpawnRate);
+
+            // custom options for evilHacker
+            evilHackerSpawnRate = CustomOption.Create(900, Types.Impostor, cs(EvilHacker.color, "EvilHacker"), rates, null, true);
+            evilHackerCanCreateMadmate = CustomOption.Create(901, Types.Impostor, "EvilHacker Can Create Madmate", false, evilHackerSpawnRate);
+            createdMadmateCanDieToSheriff = CustomOption.Create(902, Types.Impostor, "Madmate Can Die To Sheriff", false, evilHackerCanCreateMadmate);
+            createdMadmateCanEnterVents = CustomOption.Create(903, Types.Impostor, "Madmate Can Enter Vents", false, evilHackerCanCreateMadmate);
+            createdMadmateHasImpostorVision = CustomOption.Create(904, Types.Impostor, "Madmate Has Impostor Vision", false, evilHackerCanCreateMadmate);
+            createdMadmateNoticeImpostors = CustomOption.Create(905, Types.Impostor, "Show Impostors After Madmate Finishes Tasks", false, evilHackerCanCreateMadmate);
+            createdMadmateExileCrewmate = CustomOption.Create(906, Types.Impostor, "Exile A Crewmate When Madmate Is Exiled", false, evilHackerCanCreateMadmate);
 
             vampireSpawnRate = CustomOption.Create(40, Types.Impostor, cs(Vampire.color, "ヴァンパイア"), rates, null, true);
             vampireKillDelay = CustomOption.Create(41, Types.Impostor, "キルが起きるまでの時間", 10f, 1f, 20f, 1f, vampireSpawnRate);
