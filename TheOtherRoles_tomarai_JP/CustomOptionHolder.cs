@@ -333,10 +333,10 @@ namespace TheOtherRoles_tomarai_JP {
             modifiersCountMax = CustomOption.Create(307, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "最大属性数"), 0f, 0f, 15f, 1f);
 
             // custom options
-            adminTimer = CustomOption.Create(999, Types.General, "Admin Map Available Duration", 10f, 0f, 120f, 1f);
-            enabledAdminTimer = CustomOption.Create(998, Types.General, "Enable Admin Map Available Duration", true);
-            heliSabotageSystemTimeLimit = CustomOption.Create(996, Types.General, "Time Limit of Avert Crash Time", 90f, 1f, 120f, 5f);
-            hideTaskOverlayOnSabMap = CustomOption.Create(997, Types.General, "Hide Fake Tasks On Sabotage Map", false);
+            adminTimer = CustomOption.Create(999, Types.General, "アドミン制限時間", 10f, 0f, 120f, 1f);
+            enabledAdminTimer = CustomOption.Create(998, Types.General, "アドミン制限時間を有効にする", true);
+            heliSabotageSystemTimeLimit = CustomOption.Create(996, Types.General, "衝突コースを回避するサボタージュの制限時間", 90f, 1f, 120f, 5f);
+            hideTaskOverlayOnSabMap = CustomOption.Create(997, Types.General, "サボタージュマップ上からタスク表示を消す", false);
 
             mafiaSpawnRate = CustomOption.Create(10, Types.Impostor, cs(Janitor.color, "マフィア"), rates, null, true);
             janitorCooldown = CustomOption.Create(11, Types.Impostor, "掃除クールダウン", 30f, 10f, 60f, 2.5f, mafiaSpawnRate);
@@ -350,13 +350,13 @@ namespace TheOtherRoles_tomarai_JP {
             camouflagerDuration = CustomOption.Create(32, Types.Impostor, "持続時間", 10f, 1f, 20f, 0.5f, camouflagerSpawnRate);
 
             // custom options for evilHacker
-            evilHackerSpawnRate = CustomOption.Create(900, Types.Impostor, cs(EvilHacker.color, "EvilHacker"), rates, null, true);
-            evilHackerCanCreateMadmate = CustomOption.Create(901, Types.Impostor, "EvilHacker Can Create Madmate", false, evilHackerSpawnRate);
-            createdMadmateCanDieToSheriff = CustomOption.Create(902, Types.Impostor, "Madmate Can Die To Sheriff", false, evilHackerCanCreateMadmate);
-            createdMadmateCanEnterVents = CustomOption.Create(903, Types.Impostor, "Madmate Can Enter Vents", false, evilHackerCanCreateMadmate);
-            createdMadmateHasImpostorVision = CustomOption.Create(904, Types.Impostor, "Madmate Has Impostor Vision", false, evilHackerCanCreateMadmate);
-            createdMadmateNoticeImpostors = CustomOption.Create(905, Types.Impostor, "Show Impostors After Madmate Finishes Tasks", false, evilHackerCanCreateMadmate);
-            createdMadmateExileCrewmate = CustomOption.Create(906, Types.Impostor, "Exile A Crewmate When Madmate Is Exiled", false, evilHackerCanCreateMadmate);
+            evilHackerSpawnRate = CustomOption.Create(900, Types.Impostor, cs(EvilHacker.color, "イビルハッカー"), rates, null, true);
+            evilHackerCanCreateMadmate = CustomOption.Create(901, Types.Impostor, "マッドメイトを作れる", false, evilHackerSpawnRate);
+            createdMadmateCanDieToSheriff = CustomOption.Create(902, Types.Impostor, "マッドメイトがシェリフに殺される", false, evilHackerCanCreateMadmate);
+            createdMadmateCanEnterVents = CustomOption.Create(903, Types.Impostor, "マッドメイトがベントに入れる", false, evilHackerCanCreateMadmate);
+            createdMadmateHasImpostorVision = CustomOption.Create(904, Types.Impostor, "マッドメイトがインポスターの視界を持っている", false, evilHackerCanCreateMadmate);
+            createdMadmateNoticeImpostors = CustomOption.Create(905, Types.Impostor, "マッドメイトがタスクを終わらせた後にインポスターが分かる", false, evilHackerCanCreateMadmate);
+            createdMadmateExileCrewmate = CustomOption.Create(906, Types.Impostor, "マッドメイトが吊られたときにクルーを道連れにする", false, evilHackerCanCreateMadmate);
 
             vampireSpawnRate = CustomOption.Create(40, Types.Impostor, cs(Vampire.color, "ヴァンパイア"), rates, null, true);
             vampireKillDelay = CustomOption.Create(41, Types.Impostor, "キルが起きるまでの時間", 10f, 1f, 20f, 1f, vampireSpawnRate);
@@ -589,15 +589,15 @@ namespace TheOtherRoles_tomarai_JP {
             modifierInvertDuration = CustomOption.Create(1082, Types.Modifier, "反転する会議数", 3f, 1f, 15f, 1f, modifierInvert);
 
             // custom options
-            madmateSpawnRate = CustomOption.Create(910, Types.Crewmate, cs(Madmate.color, "Madmate"), rates, null, true);
-            madmateCanDieToSheriff = CustomOption.Create(911, Types.Crewmate, "Madmate Can Die To Sheriff", false, madmateSpawnRate);
-            madmateCanEnterVents = CustomOption.Create(912, Types.Crewmate, "Madmate Can Enter Vents", false, madmateSpawnRate);
-            madmateHasImpostorVision = CustomOption.Create(913, Types.Crewmate, "Madmate Has Impostor Vision", false, madmateSpawnRate);
-            madmateNoticeImpostors = CustomOption.Create(914, Types.Crewmate, "Show Impostors After Madmate Finishes Tasks", false, madmateSpawnRate);
-            madmateCommonTasks = CustomOption.Create(915, Types.Crewmate, "Madmate Common Tasks", 0f, 0f, 4f, 1f, madmateNoticeImpostors);
-            madmateShortTasks = CustomOption.Create(916, Types.Crewmate, "Madmate Short Tasks", 0f, 0f, 23f, 1f, madmateNoticeImpostors);
-            madmateLongTasks = CustomOption.Create(917, Types.Crewmate, "Madmate Long Tasks", 0f, 0f, 15f, 1f, madmateNoticeImpostors);
-            madmateExileCrewmate = CustomOption.Create(918, Types.Crewmate, "Exile A Crewmate When Madmate Is exiled", false, madmateSpawnRate);
+            madmateSpawnRate = CustomOption.Create(910, Types.Crewmate, cs(Madmate.color, "マッドメイト"), rates, null, true);
+            madmateCanDieToSheriff = CustomOption.Create(911, Types.Crewmate, "シェリフに殺される", false, madmateSpawnRate);
+            madmateCanEnterVents = CustomOption.Create(912, Types.Crewmate, "ベントに入れる", false, madmateSpawnRate);
+            madmateHasImpostorVision = CustomOption.Create(913, Types.Crewmate, "インポスターの視界を持っている", false, madmateSpawnRate);
+            madmateNoticeImpostors = CustomOption.Create(914, Types.Crewmate, "タスクを終わらせた後にインポスターが分かる", false, madmateSpawnRate);
+            madmateCommonTasks = CustomOption.Create(915, Types.Crewmate, "通常タスク", 0f, 0f, 4f, 1f, madmateNoticeImpostors);
+            madmateShortTasks = CustomOption.Create(916, Types.Crewmate, "ショートタスク", 0f, 0f, 23f, 1f, madmateNoticeImpostors);
+            madmateLongTasks = CustomOption.Create(917, Types.Crewmate, "ロングタスク", 0f, 0f, 15f, 1f, madmateNoticeImpostors);
+            madmateExileCrewmate = CustomOption.Create(918, Types.Crewmate, "吊られたときにクルーを道連れにする", false, madmateSpawnRate);
 
             // Other options
             maxNumberOfMeetings = CustomOption.Create(3, Types.General, "ミーティングを開ける回数 (メイヤーを含まない)", 10, 0, 15, 1, null, true);

@@ -115,7 +115,7 @@ namespace TheOtherRoles_tomarai_JP.Patches {
                 __instance.TeamTitle.text = roleInfo.name;
                 __instance.TeamTitle.color = roleInfo.color;
                 __instance.ImpostorText.gameObject.SetActive(true);
-                __instance.ImpostorText.text = "Team Impostor";
+                __instance.ImpostorText.text = "インポスター陣営";
             }
         }
 

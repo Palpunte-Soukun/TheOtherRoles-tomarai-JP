@@ -76,9 +76,9 @@ namespace TheOtherRoles_tomarai_JP{
             AdminTimerText = UnityEngine.Object.Instantiate(HudManager.Instance.TaskText, HudManager.Instance.transform);
             AdminTimerText.transform.localPosition = new Vector3(-3.5f, -4.0f, 0);
             if (AdminTimer > 0)
-                AdminTimerText.text = $"Admin: {Mathf.RoundToInt(AdminTimer)} sec remaining";
+                AdminTimerText.text = $"アドミン:残り {Mathf.RoundToInt(AdminTimer)} 秒";
             else
-                AdminTimerText.text = "Admin: ran out of time";
+                AdminTimerText.text = "アドミン: 時間切れ";
             AdminTimerText.gameObject.SetActive(true);
         }
 

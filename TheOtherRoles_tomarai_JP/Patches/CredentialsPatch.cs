@@ -22,8 +22,8 @@ $@"Mod <color=#FCCE03FF>Eisbison</color>, <color=#FCCE03FF>Thunderstorm584</colo
         public static string contributorsCredentials =
 $@"<size=60%> <color=#FCCE03FF>スペシャルサンクス K3ndo & Smeggy</color> 
 GitHub寄稿者: Gendelo, Alex2911, amsyarasyiq, MaximeGillot, Psynomit</size>";
-        public static string TranslatorCredentials =
-        $@"<size=60%><color=#ffa932>そうくん<color></size>";
+        //public static string TranslatorCredentials =
+        //$@"<size=60%><color=#ffa932>そうくん<color></size>";
 
         [HarmonyPatch(typeof(VersionShower), nameof(VersionShower.Start))]
         private static class VersionShowerPatch
@@ -34,7 +34,7 @@ GitHub寄稿者: Gendelo, Alex2911, amsyarasyiq, MaximeGillot, Psynomit</size>";
 
                 var credentials = UnityEngine.Object.Instantiate<TMPro.TextMeshPro>(__instance.text);
                 credentials.transform.position = new Vector3(0, 0, 0);
-                credentials.SetText($"v{TheOtherRoles_tomarai_JPPlugin.Version.ToString()}\n<size=30f%>\n</size>{mainMenuCredentials}\n<size=30%>\n</size>{contributorsCredentials}\n{TranslatorCredentials}");
+                credentials.SetText($"v{TheOtherRoles_tomarai_JPPlugin.Version.ToString()}\n<size=30f%>\n</size>{mainMenuCredentials}\n<size=30%>\n</size>{contributorsCredentials}");
                 credentials.alignment = TMPro.TextAlignmentOptions.Center;
                 credentials.fontSize *= 0.75f;
 
