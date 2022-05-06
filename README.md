@@ -8,9 +8,9 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 ![eisbison infographic](./Images/TOR_Roles.png)
 
 
-# The Other Roles
+# The Other Roles tomarai-JP
 
-The **The Other Roles**, is a mod for [Among Us](https://store.steampowered.com/app/945360/Among_Us) which adds many new roles, new [Settings](#settings) and new [Custom Hats](#custom-hats) to the game.
+The **The Other Roles tomarai-JP**, is a mod for [Among Us](https://store.steampowered.com/app/945360/Among_Us) which adds many new roles, new [Settings](#settings) and new [Custom Hats](#custom-hats) to the game.
 Even more roles are coming soon. :)
 
 | Impostors | Crewmates | Neutral | Modifier |
@@ -182,7 +182,7 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 - Added Lover option "Enable Lover Chat"
 - Added return votes in meetings: You'll now get your votes back if your target got shot by the Guesser
 - Added New Option for Guesser: Guesser can't guess Snitch if they has done all tasks (created by [MaximeGillot](https://github.com/MaximeGillot))
-- Added The Other Roles changelog announcement popup
+- Added The Other Roles tomarai-JP changelog announcement popup
 - Changed that the Bounty Hunter exclude their Lover
 - Changed the position of the Witch icon in meetings for better visibility
 - Fixed a bug where the spy had a white name for Impostors in chat
@@ -360,7 +360,7 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 - Added new `flip` option to [Custom Hats](#custom-hats)
 
 **Version 2.6.2**
-- The Other Roles now supports the new Among Us version **2021.5.10s**
+- The Other Roles tomarai-JP now supports the new Among Us version **2021.5.10s**
 - Added a chat command to kick players as the host of a lobby (`/kick playerName`)
 
 **Version 2.6.1**

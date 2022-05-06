@@ -26,7 +26,7 @@ If applicable, add screenshots to help explain your problem.
 **System (please complete the following information):**
  - OS: [e.g. Windows 11]
  - Among Us Version [e.g. v2021.11.15s]
- - TheOtherRoles Version [e.g. v3.3.3]
+ - TheOtherRoles_tomarai_JP Version [e.g. v3.3.3]
 
 **Additional context**
 Add any other context about the problem here.
