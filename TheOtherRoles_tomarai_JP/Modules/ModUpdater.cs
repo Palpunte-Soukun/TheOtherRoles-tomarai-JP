@@ -93,7 +93,7 @@ namespace TheOtherRoles_tomarai_JP.Modules
 
             var text = button.transform.GetChild(0).GetComponent<TMP_Text>();
             string t = "Update";
-            if (TORUpdate is null) t = SubmergedCompatibility.Loaded ? $"Update\nSubmerged" : $"Download\nSubmerged";
+            if (TORUpdate is null) t = SubmergedCompatibility.Loaded ? $"Submerged\nをアップデート" : $"Submerged\nをダウンロード";
 
             StartCoroutine(Effects.Lerp(0.1f, (Action<float>)(p => text.SetText(t))));
 
@@ -101,7 +101,7 @@ namespace TheOtherRoles_tomarai_JP.Modules
             passiveButton.OnMouseOut.AddListener((Action)(() => buttonSprite.color = text.color = Color.red));
 
             var isSubmerged = TORUpdate == null;
-            var announcement = $"<size=150%>A new <color=#FC0303>{(isSubmerged ? "Submerged" : "The Other Roles tomarai-JP")}</color> update to {(isSubmerged ? SubmergedUpdate.Tag : TORUpdate.Tag)} is available</size>\n{(isSubmerged ? SubmergedUpdate.Content : TORUpdate.Content)}";
+            var announcement = $"<size=150%>新しい <color=#FC0303>{(isSubmerged ? "Submerged" : "The Other Roles tomarai-JP")}</color> のアップデートがあります {(isSubmerged ? SubmergedUpdate.Tag : TORUpdate.Tag)}</size>\n{(isSubmerged ? SubmergedUpdate.Content : TORUpdate.Content)}";
             var mgr = FindObjectOfType<MainMenuManager>(true);
             if (isSubmerged && !SubmergedCompatibility.Loaded) showPopUp = false;
             showPopUp = false;
@@ -117,11 +117,11 @@ namespace TheOtherRoles_tomarai_JP.Modules
             popup.TextAreaTMP.fontSize *= 0.7f;
             popup.TextAreaTMP.enableAutoSizing = false;
             popup.Show();
-            popup.TextAreaTMP.text = $"Updating {updateName}\nPlease wait...";
+            popup.TextAreaTMP.text = $"{updateName} をアップデート中...\nしばらくお待ちください。";
 
             var download = Task.Run(DownloadUpdate);
             while (!download.IsCompleted) yield return null;
-            popup.TextAreaTMP.text = download.Result ? $"{updateName}\nupdated successfully\nPlease restart the game." : "Update wasn't successful\nTry again later,\nor update manually.";
+            popup.TextAreaTMP.text = download.Result ? $"{updateName}\nは正常にアップデートされました\nゲームを再起動してください。" : "アップデートに失敗しました。\n手動でダウンロードしてください。";
 
         }
 
@@ -141,7 +141,7 @@ namespace TheOtherRoles_tomarai_JP.Modules
         [HideFromIl2Cpp]
         public static IEnumerator CoCheckUpdates()
         {
-            var torUpdateCheck = Task.Run(() => Instance.GetGithubUpdate("Eisbison", "TheOtherRoles_tomarai_JP"));
+            var torUpdateCheck = Task.Run(() => Instance.GetGithubUpdate("Palpunte-Soukun", "TheOtherRoles_tomarai_JP"));
             while (!torUpdateCheck.IsCompleted) yield return null;
             Announcement.updateData = torUpdateCheck.Result;
             if (torUpdateCheck.Result != null && torUpdateCheck.Result.IsNewer(Version.Parse(TheOtherRoles_tomarai_JPPlugin.VersionString)))
