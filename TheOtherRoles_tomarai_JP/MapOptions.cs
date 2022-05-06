@@ -37,6 +37,10 @@ namespace TheOtherRoles_tomarai_JP{
             ventsToSeal = new List<Vent>();
             playerIcons = new Dictionary<byte, PoolablePlayer>(); ;
 
+            AdminTimer = CustomOptionHolder.adminTimer.getFloat();
+            ClearAdminTimerText();
+            UpdateAdminTimerText();
+
             maxNumberOfMeetings = Mathf.RoundToInt(CustomOptionHolder.maxNumberOfMeetings.getSelection());
             blockSkippingInEmergencyMeetings = CustomOptionHolder.blockSkippingInEmergencyMeetings.getBool();
             noVoteIsSelfVote = CustomOptionHolder.noVoteIsSelfVote.getBool();
@@ -55,6 +59,35 @@ namespace TheOtherRoles_tomarai_JP{
             showLighterDarker = TheOtherRoles_tomarai_JPPlugin.ShowLighterDarker.Value;
             enableHorseMode = TheOtherRoles_tomarai_JPPlugin.EnableHorseMode.Value;
             Patches.ShouldAlwaysHorseAround.isHorseMode = TheOtherRoles_tomarai_JPPlugin.EnableHorseMode.Value;
+        }
+
+        public static void MeetingEndedUpdate()
+        {
+            ClearAdminTimerText();
+            UpdateAdminTimerText();
+        }
+
+        public static void UpdateAdminTimerText()
+        {
+            if (!CustomOptionHolder.enabledAdminTimer.getBool())
+                return;
+            if (HudManager.Instance == null)
+                return;
+            AdminTimerText = UnityEngine.Object.Instantiate(HudManager.Instance.TaskText, HudManager.Instance.transform);
+            AdminTimerText.transform.localPosition = new Vector3(-3.5f, -4.0f, 0);
+            if (AdminTimer > 0)
+                AdminTimerText.text = $"Admin: {Mathf.RoundToInt(AdminTimer)} sec remaining";
+            else
+                AdminTimerText.text = "Admin: ran out of time";
+            AdminTimerText.gameObject.SetActive(true);
+        }
+
+        private static void ClearAdminTimerText()
+        {
+            if (AdminTimerText == null)
+                return;
+            UnityEngine.Object.Destroy(AdminTimerText);
+            AdminTimerText = null;
         }
     }
 }

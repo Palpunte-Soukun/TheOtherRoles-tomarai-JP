@@ -27,6 +27,11 @@ namespace TheOtherRoles_tomarai_JP {
         public static CustomOption modifiersCountMin;
         public static CustomOption modifiersCountMax;
 
+        public static CustomOption adminTimer;
+        public static CustomOption enabledAdminTimer;
+        public static CustomOption heliSabotageSystemTimeLimit;
+        public static CustomOption hideTaskOverlayOnSabMap;
+
         public static CustomOption mafiaSpawnRate;
         public static CustomOption janitorCooldown;
 
@@ -326,6 +331,12 @@ namespace TheOtherRoles_tomarai_JP {
             impostorRolesCountMax = CustomOption.Create(305, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "最大インポスター役職数"), 0f, 0f, 3f, 1f);
             modifiersCountMin = CustomOption.Create(306, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "最小属性数"), 0f, 0f, 15f, 1f);
             modifiersCountMax = CustomOption.Create(307, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "最大属性数"), 0f, 0f, 15f, 1f);
+
+            // custom options
+            adminTimer = CustomOption.Create(999, Types.General, "Admin Map Available Duration", 10f, 0f, 120f, 1f);
+            enabledAdminTimer = CustomOption.Create(998, Types.General, "Enable Admin Map Available Duration", true);
+            heliSabotageSystemTimeLimit = CustomOption.Create(996, Types.General, "Time Limit of Avert Crash Time", 90f, 1f, 120f, 5f);
+            hideTaskOverlayOnSabMap = CustomOption.Create(997, Types.General, "Hide Fake Tasks On Sabotage Map", false);
 
             mafiaSpawnRate = CustomOption.Create(10, Types.Impostor, cs(Janitor.color, "マフィア"), rates, null, true);
             janitorCooldown = CustomOption.Create(11, Types.Impostor, "掃除クールダウン", 30f, 10f, 60f, 2.5f, mafiaSpawnRate);
