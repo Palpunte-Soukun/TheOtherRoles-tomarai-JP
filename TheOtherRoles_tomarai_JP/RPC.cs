@@ -51,6 +51,7 @@ namespace TheOtherRoles_tomarai_JP
         BountyHunter,
         Vulture,
         Medium,
+        Madmate,
         Lawyer,
         Pursuer,
         Witch,
@@ -82,6 +83,7 @@ namespace TheOtherRoles_tomarai_JP
         UseUncheckedVent,
         UncheckedMurderPlayer,
         UncheckedCmdReportDeadBody,
+        ConsumeAdminTime,
         UncheckedExilePlayer,
         DynamicMapOption,
 
@@ -288,6 +290,9 @@ namespace TheOtherRoles_tomarai_JP
                     case RoleId.Medium:
                         Medium.medium = player;
                         break;
+                    case RoleId.Madmate:
+                        Madmate.madmate = player;
+                        break;
                     case RoleId.Lawyer:
                         Lawyer.lawyer = player;
                         break;
@@ -375,6 +380,10 @@ namespace TheOtherRoles_tomarai_JP
             PlayerControl source = Helpers.playerById(sourceId);
             var t = targetId == Byte.MaxValue ? null : Helpers.playerById(targetId).Data;
             if (source != null) source.ReportDeadBody(t);
+        }
+
+        public static void consumeAdminTime(float delta) {
+            MapOptions.AdminTimer -= delta;
         }
 
         public static void uncheckedExilePlayer(byte targetId) {
@@ -531,6 +540,8 @@ namespace TheOtherRoles_tomarai_JP
             // Set cooldowns to max for both players
             if (PlayerControl.LocalPlayer == oldShifter || PlayerControl.LocalPlayer == player)
                 CustomButton.ResetAllCooldowns();
+            if (Madmate.madmate != null && Madmate.madmate == player)
+                Madmate.madmate = oldShifter;
         }
 
         public static void swapperSwap(byte playerId1, byte playerId2) {
@@ -667,7 +678,8 @@ namespace TheOtherRoles_tomarai_JP
             if (player == Spy.spy) Spy.clearAndReload();
             if (player == SecurityGuard.securityGuard) SecurityGuard.clearAndReload();
             if (player == Medium.medium) Medium.clearAndReload();
-
+            if (player == Madmate.madmate) Madmate.clearAndReload();
+    
             // Impostor roles
             if (player == Morphling.morphling) Morphling.clearAndReload();
             if (player == Camouflager.camouflager) Camouflager.clearAndReload();
@@ -998,6 +1010,10 @@ namespace TheOtherRoles_tomarai_JP
                     byte reportSource = reader.ReadByte();
                     byte reportTarget = reader.ReadByte();
                     RPCProcedure.uncheckedCmdReportDeadBody(reportSource, reportTarget);
+                    break;
+                case (byte)CustomRPC.ConsumeAdminTime:
+                    float delta = reader.ReadSingle();
+                    RPCProcedure.consumeAdminTime(delta);
                     break;
                 case (byte)CustomRPC.DynamicMapOption:
                     byte mapId = reader.ReadByte();

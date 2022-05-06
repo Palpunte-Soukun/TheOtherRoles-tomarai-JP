@@ -26,6 +26,8 @@ namespace TheOtherRoles_tomarai_JP{
         public static List<SurvCamera> camerasToAdd = new List<SurvCamera>();
         public static List<Vent> ventsToSeal = new List<Vent>();
         public static Dictionary<byte, PoolablePlayer> playerIcons = new Dictionary<byte, PoolablePlayer>();
+        public static float AdminTimer = 0f;
+        public static TMPro.TextMeshPro AdminTimerText = null;
         public static string firstKillName;
         public static PlayerControl firstKillPlayer;
 

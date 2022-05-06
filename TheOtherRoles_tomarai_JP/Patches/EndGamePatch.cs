@@ -81,6 +81,7 @@ namespace TheOtherRoles_tomarai_JP.Patches {
             if (Jackal.jackal != null) notWinners.Add(Jackal.jackal);
             if (Arsonist.arsonist != null) notWinners.Add(Arsonist.arsonist);
             if (Vulture.vulture != null) notWinners.Add(Vulture.vulture);
+            if (Madmate.madmate != null) notWinners.Add(Madmate.madmate);
             if (Lawyer.lawyer != null) notWinners.Add(Lawyer.lawyer);
             if (Pursuer.pursuer != null) notWinners.Add(Pursuer.pursuer);
 
@@ -180,13 +181,22 @@ namespace TheOtherRoles_tomarai_JP.Patches {
                     TempData.winners.Add(wpdFormerJackal);
                 }
             }
-
             // Lawyer solo win 
             else if (lawyerSoloWin && !Pursuer.notAckedExiled) {
                 TempData.winners = new Il2CppSystem.Collections.Generic.List<WinningPlayerData>();
                 WinningPlayerData wpd = new WinningPlayerData(Lawyer.lawyer.Data);
                 TempData.winners.Add(wpd);
                 AdditionalTempData.winCondition = WinCondition.LawyerSoloWin;
+            }
+            else {
+                // Madmate wins if team impostors wins
+                foreach (WinningPlayerData winner in TempData.winners) {
+                    if (winner.IsImpostor) {
+                        WinningPlayerData wpd = new WinningPlayerData(Madmate.madmate.Data);
+                        TempData.winners.Add(wpd);
+                        break;
+                    }
+                }
             }
 
             // Possible Additional winner: Lawyer

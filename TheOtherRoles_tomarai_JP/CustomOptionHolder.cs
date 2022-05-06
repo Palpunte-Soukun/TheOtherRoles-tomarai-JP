@@ -126,6 +126,7 @@ namespace TheOtherRoles_tomarai_JP {
 
         public static CustomOption sheriffSpawnRate;
         public static CustomOption sheriffCooldown;
+        public static CustomOption sheriffNumberOfShots;
         public static CustomOption sheriffCanKillNeutrals;
         public static CustomOption deputySpawnRate;
 
@@ -230,6 +231,16 @@ namespace TheOtherRoles_tomarai_JP {
         public static CustomOption mediumCooldown;
         public static CustomOption mediumDuration;
         public static CustomOption mediumOneTimeUse;
+
+        public static CustomOption madmateSpawnRate;
+        public static CustomOption madmateCanDieToSheriff;
+        public static CustomOption madmateCanEnterVents;
+        public static CustomOption madmateHasImpostorVision;
+        public static CustomOption madmateNoticeImpostors;
+        public static CustomOption madmateCommonTasks;
+        public static CustomOption madmateShortTasks;
+        public static CustomOption madmateLongTasks;
+        public static CustomOption madmateExileCrewmate;
 
         public static CustomOption lawyerSpawnRate;
         public static CustomOption lawyerTargetCanBeJester;
@@ -436,6 +447,8 @@ namespace TheOtherRoles_tomarai_JP {
             sheriffSpawnRate = CustomOption.Create(100, Types.Crewmate, cs(Sheriff.color, "シェリフ"), rates, null, true);
             sheriffCooldown = CustomOption.Create(101, Types.Crewmate, "シェリフのキルクール", 30f, 10f, 60f, 2.5f, sheriffSpawnRate);
             sheriffCanKillNeutrals = CustomOption.Create(102, Types.Crewmate, "第三陣営をキルできる", false, sheriffSpawnRate);
+            // custom options
+            sheriffNumberOfShots = CustomOption.Create(920, Types.Crewmate, "Sheriff Number Of Shots", 1f, 1f, 15, 1f, sheriffSpawnRate);
             deputySpawnRate = CustomOption.Create(103, Types.Crewmate, "デピュティを持っている", rates, sheriffSpawnRate);
             deputyNumberOfHandcuffs = CustomOption.Create(104, Types.Crewmate, "デピュティが掛けられる手錠の数", 3f, 1f, 10f, 1f, deputySpawnRate);
             deputyHandcuffCooldown = CustomOption.Create(105, Types.Crewmate, "手錠クールダウン", 30f, 10f, 60f, 2.5f, deputySpawnRate);
@@ -563,6 +576,17 @@ namespace TheOtherRoles_tomarai_JP {
             modifierInvert = CustomOption.Create(1080, Types.Modifier, cs(Color.yellow, "インバート"), rates, null, true);
             modifierInvertQuantity = CustomOption.Create(1081, Types.Modifier, cs(Color.yellow, "属性の量"), ratesModifier, modifierInvert);
             modifierInvertDuration = CustomOption.Create(1082, Types.Modifier, "反転する会議数", 3f, 1f, 15f, 1f, modifierInvert);
+
+            // custom options
+            madmateSpawnRate = CustomOption.Create(910, Types.Crewmate, cs(Madmate.color, "Madmate"), rates, null, true);
+            madmateCanDieToSheriff = CustomOption.Create(911, Types.Crewmate, "Madmate Can Die To Sheriff", false, madmateSpawnRate);
+            madmateCanEnterVents = CustomOption.Create(912, Types.Crewmate, "Madmate Can Enter Vents", false, madmateSpawnRate);
+            madmateHasImpostorVision = CustomOption.Create(913, Types.Crewmate, "Madmate Has Impostor Vision", false, madmateSpawnRate);
+            madmateNoticeImpostors = CustomOption.Create(914, Types.Crewmate, "Show Impostors After Madmate Finishes Tasks", false, madmateSpawnRate);
+            madmateCommonTasks = CustomOption.Create(915, Types.Crewmate, "Madmate Common Tasks", 0f, 0f, 4f, 1f, madmateNoticeImpostors);
+            madmateShortTasks = CustomOption.Create(916, Types.Crewmate, "Madmate Short Tasks", 0f, 0f, 23f, 1f, madmateNoticeImpostors);
+            madmateLongTasks = CustomOption.Create(917, Types.Crewmate, "Madmate Long Tasks", 0f, 0f, 15f, 1f, madmateNoticeImpostors);
+            madmateExileCrewmate = CustomOption.Create(918, Types.Crewmate, "Exile A Crewmate When Madmate Is exiled", false, madmateSpawnRate);
 
             // Other options
             maxNumberOfMeetings = CustomOption.Create(3, Types.General, "ミーティングを開ける回数 (メイヤーを含まない)", 10, 0, 15, 1, null, true);

@@ -63,6 +63,7 @@ namespace TheOtherRoles_tomarai_JP
         public static RoleInfo badGuesser = new RoleInfo("イビルゲッサー", Palette.ImpostorRed, "推理して撃ち抜け", "推理して撃ち抜け", RoleId.EvilGuesser);
         public static RoleInfo vulture = new RoleInfo("バルチャー", Vulture.color, "死体を食べて勝利しよう", "死体を食べよう", RoleId.Vulture, true);
         public static RoleInfo medium = new RoleInfo("ミーディアム", Medium.color, "死人に質問して情報を手に入れよう", "死人に質問しよう", RoleId.Medium);
+        public static RoleInfo madmate = new RoleInfo("Madmate", Madmate.color, "Help the <color=#FF1919FF>Impostors</color>", "Help the Impostors", RoleId.Madmate);
         public static RoleInfo lawyer = new RoleInfo("弁護士", Lawyer.color, "依頼人を守ろう", "依頼人を守ろう", RoleId.Lawyer, true);
         public static RoleInfo pursuer = new RoleInfo("追跡者", Pursuer.color, "Blank the インポスター", "Blank the インポスター", RoleId.Pursuer);
         public static RoleInfo impostor = new RoleInfo("インポスター", Palette.ImpostorRed, Helpers.cs(Palette.ImpostorRed, "サボを活用して皆殺しにしよう"), "サボを活用して皆殺しにしよう", RoleId.Impostor);
@@ -130,6 +131,7 @@ namespace TheOtherRoles_tomarai_JP
             securityGuard,
             bait,
             medium,
+            madmate,
             bloody,
             antiTeleport,
             tiebreaker,
@@ -196,6 +198,7 @@ namespace TheOtherRoles_tomarai_JP
             if (p == BountyHunter.bountyHunter) infos.Add(bountyHunter);
             if (p == Vulture.vulture) infos.Add(vulture);
             if (p == Medium.medium) infos.Add(medium);
+            if (p == Madmate.madmate) infos.Add(madmate);
             if (p == Lawyer.lawyer) infos.Add(lawyer);
             if (p == Pursuer.pursuer) infos.Add(pursuer);
 

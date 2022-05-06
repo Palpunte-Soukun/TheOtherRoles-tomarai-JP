@@ -5,9 +5,9 @@ using System.Linq;
 using UnhollowerBaseLib;
 using UnityEngine;
 using System;
-using static TheOtherRoles.TheOtherRoles;
+using static TheOtherRoles_tomarai_JP.TheOtherRoles_tomarai_JP;
 
-namespace TheOtherRoles.Patches {
+namespace TheOtherRoles_tomarai_JP.Patches {
     [HarmonyPatch(typeof(RoleOptionsData), nameof(RoleOptionsData.GetNumPerGame))]
     class RoleOptionsDataGetNumPerGamePatch{
         public static void Postfix(ref int __result) {

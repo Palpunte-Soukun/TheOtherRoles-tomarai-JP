@@ -57,6 +57,7 @@ namespace TheOtherRoles_tomarai_JP
             BountyHunter.clearAndReload();
             Vulture.clearAndReload();
             Medium.clearAndReload();
+            Madmate.clearAndReload();
             Lawyer.clearAndReload();
             Pursuer.clearAndReload();
             Witch.clearAndReload();
@@ -225,8 +226,10 @@ namespace TheOtherRoles_tomarai_JP
             public static Color color = new Color32(248, 205, 70, byte.MaxValue);
 
             public static float cooldown = 30f;
+            public static int remainingShots = 1;
             public static bool canKillNeutrals = false;
             public static bool spyCanDieToSheriff = false;
+            public static bool madmateCanDieToSheriff = false;
 
             public static PlayerControl currentTarget;
 
@@ -659,7 +662,7 @@ namespace TheOtherRoles_tomarai_JP
 
         public static Sprite getMadmateButtonSprite() {
             if (madmateButtonSprite) return madmateButtonSprite;
-            madmateButtonSprite = Helpers.loadSpriteFromResources("TheOtherRoles.Resources.SidekickButton.png", 115f);
+            madmateButtonSprite = Helpers.loadSpriteFromResources("TheOtherRoles_tomarai_JP.Resources.SidekickButton.png", 115f);
             return madmateButtonSprite;
         }
 

@@ -12,6 +12,24 @@ namespace TheOtherRoles_tomarai_JP.Patches {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     class HudManagerUpdatePatch
     {
+        private static bool CanPlayerSeeImpostorName()
+        {
+            if (PlayerControl.LocalPlayer.Data.Role.IsImpostor)
+                return true;
+
+            if (Madmate.madmate == null)
+                return false;
+
+            if (Madmate.madmate != PlayerControl.LocalPlayer)
+                return false;
+
+            if (!Madmate.noticeImpostors)
+                return false;
+
+            var (playerCompleted, playerTotal) = TasksHandler.taskInfo(Madmate.madmate.Data, true);
+            return playerTotal - playerCompleted <= 0;
+        }
+
         static void resetNameTagsAndColors() {
             Dictionary<byte, PlayerControl> playersById = Helpers.allPlayersById();
 
@@ -125,6 +143,8 @@ namespace TheOtherRoles_tomarai_JP.Patches {
                 setPlayerNameColor(Vulture.vulture, Vulture.color);
             } else if (Medium.medium != null && Medium.medium == PlayerControl.LocalPlayer) {
                 setPlayerNameColor(Medium.medium, Medium.color);
+            } else if (Madmate.madmate != null && Madmate.madmate == PlayerControl.LocalPlayer) {
+                setPlayerNameColor(Madmate.madmate, Madmate.color);
             } else if (Lawyer.lawyer != null && Lawyer.lawyer == PlayerControl.LocalPlayer) {
                 setPlayerNameColor(Lawyer.lawyer, Lawyer.color);
             } else if (Pursuer.pursuer != null && Pursuer.pursuer == PlayerControl.LocalPlayer) {
