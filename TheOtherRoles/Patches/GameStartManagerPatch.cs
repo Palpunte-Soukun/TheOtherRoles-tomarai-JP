@@ -68,18 +68,18 @@ namespace TheOtherRoles.Patches {
                             continue;
                         else if (!playerVersions.ContainsKey(client.Id))  {
                             blockStart = true;
-                            message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} has a different or no version of The Other Roles\n</color>";
+                            message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} は違うバージョンの The Other Rolesを導入しているか、The Other Rolesが導入されていません\n</color>";
                         } else {
                             PlayerVersion PV = playerVersions[client.Id];
                             int diff = TheOtherRolesPlugin.Version.CompareTo(PV.version);
                             if (diff > 0) {
-                                message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} has an older version of The Other Roles (v{playerVersions[client.Id].version.ToString()})\n</color>";
+                                message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} は、古いバージョンのThe Other Rolesを入れています (v{playerVersions[client.Id].version.ToString()})\n</color>";
                                 blockStart = true;
                             } else if (diff < 0) {
-                                message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} has a newer version of The Other Roles (v{playerVersions[client.Id].version.ToString()})\n</color>";
+                                message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} は、新しいバージョンのThe Other Rolesを入れています (v{playerVersions[client.Id].version.ToString()})\n</color>";
                                 blockStart = true;
                             } else if (!PV.GuidMatches()) { // version presumably matches, check if Guid matches
-                                message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} has a modified version of TOR v{playerVersions[client.Id].version.ToString()} <size=30%>({PV.guid.ToString()})</size>\n</color>";
+                                message += $"<color=#FF0000FF>{client.Character.Data.PlayerName} は、修正されたTORを入れています v{playerVersions[client.Id].version.ToString()} <size=30%>({PV.guid.ToString()})</size>\n</color>";
                                 blockStart = true;
                             }
                         }
@@ -104,7 +104,7 @@ namespace TheOtherRoles.Patches {
                             SceneChanger.ChangeScene("MainMenu");
                         }
 
-                        __instance.GameStartText.text = $"<color=#FF0000FF>The host has no or a different version of The Other Roles\nYou will be kicked in {Math.Round(10 - kickingTimer)}s</color>";
+                        __instance.GameStartText.text = $"<color=#FF0000FF>ホストがThe Other Rolesを入れてないか、バージョンが違います。\n{Math.Round(10 - kickingTimer)}秒後にキックされます。</color>";
                         __instance.GameStartText.transform.localPosition = __instance.StartButton.transform.localPosition + Vector3.up * 2;
                     } else {
                         __instance.GameStartText.transform.localPosition = __instance.StartButton.transform.localPosition;

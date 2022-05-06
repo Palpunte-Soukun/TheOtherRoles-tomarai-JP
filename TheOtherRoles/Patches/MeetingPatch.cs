@@ -230,13 +230,13 @@ namespace TheOtherRoles.Patches {
                 } else {
                     selections[i] = true;
                     renderer.color = Color.yellow;
-                    swapperConfirmButtonLabel.text = Helpers.cs(Color.yellow, "Confirm Swap");
+                    swapperConfirmButtonLabel.text = Helpers.cs(Color.yellow, "スワップを確定");
                 }
             } else if (selectedCount == 2) {
                 if (selections[i]) {
                     renderer.color = Color.red;
                     selections[i] = false;
-                    swapperConfirmButtonLabel.text = Helpers.cs(Color.red, "Confirm Swap");
+                    swapperConfirmButtonLabel.text = Helpers.cs(Color.red, "スワップを確定");
                 }
             }
         }
@@ -269,9 +269,9 @@ namespace TheOtherRoles.Patches {
                 AmongUsClient.Instance.FinishRpcImmediately(writer);
 
                 RPCProcedure.swapperSwap((byte)firstPlayer.TargetPlayerId, (byte)secondPlayer.TargetPlayerId);
-                swapperConfirmButtonLabel.text = Helpers.cs(Color.green, "Swapping!");
+                swapperConfirmButtonLabel.text = Helpers.cs(Color.green, "スワップ中!");
                 Swapper.charges--;
-                swapperChargesText.text = $"Swaps: {Swapper.charges}";
+                swapperChargesText.text = $"残りスワップ: {Swapper.charges}";
             }
         }
 
@@ -537,8 +537,8 @@ namespace TheOtherRoles.Patches {
                 if (Portalmaker.portalmaker != null && PlayerControl.LocalPlayer == Portalmaker.portalmaker && !PlayerControl.LocalPlayer.Data.IsDead) {
                     foreach (var entry in Portal.teleportedPlayers) {
                         float timeBeforeMeeting = ((float)(DateTime.UtcNow - entry.time).TotalMilliseconds) / 1000;
-                        string msg = Portalmaker.logShowsTime ? $"{(int)timeBeforeMeeting}s ago: " : "";
-                        msg = msg + $"{entry.name} used the teleporter";
+                        string msg = Portalmaker.logShowsTime ? $"{(int)timeBeforeMeeting}秒前: " : "";
+                        msg = msg + $"{entry.name} はテレポーターを使用しました";
                         DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"{msg}");
                     }
                 }

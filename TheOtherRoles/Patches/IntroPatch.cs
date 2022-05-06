@@ -97,7 +97,7 @@ namespace TheOtherRoles.Patches {
             if (roleInfo.isNeutral) {
                 var neutralColor = new Color32(76, 84, 78, 255);
                 __instance.BackgroundBar.material.color = neutralColor;
-                __instance.TeamTitle.text = "Neutral";
+                __instance.TeamTitle.text = "第三陣営";
                 __instance.TeamTitle.color = neutralColor;
             }
         }
@@ -130,14 +130,14 @@ namespace TheOtherRoles.Patches {
                         __instance.RoleBlurbText.text += Helpers.cs(modifierInfo.color, $"\n{modifierInfo.introDescription}");
                     else {
                         PlayerControl otherLover = PlayerControl.LocalPlayer == Lovers.lover1 ? Lovers.lover2 : Lovers.lover1;
-                        __instance.RoleBlurbText.text += Helpers.cs(Lovers.color, $"\n♥ You are in love with {otherLover?.Data?.PlayerName ?? ""} ♥");
+                        __instance.RoleBlurbText.text += Helpers.cs(Lovers.color, $"\n♥{otherLover?.Data?.PlayerName ?? ""} と恋人になりました ♥");
                     }
                 }
                 if (Deputy.knowsSheriff && Deputy.deputy != null && Sheriff.sheriff != null) {
                     if (infos.Any(info => info.roleId == RoleId.Sheriff))
-                        __instance.RoleBlurbText.text += Helpers.cs(Sheriff.color, $"\nYour Deputy is {Deputy.deputy?.Data?.PlayerName ?? ""}");
+                        __instance.RoleBlurbText.text += Helpers.cs(Sheriff.color, $"\nあなたのデピュティは {Deputy.deputy?.Data?.PlayerName ?? ""} です");
                     else if (infos.Any(info => info.roleId == RoleId.Deputy))
-                        __instance.RoleBlurbText.text += Helpers.cs(Sheriff.color, $"\nYour Sheriff is {Sheriff.sheriff?.Data?.PlayerName ?? ""}");
+                        __instance.RoleBlurbText.text += Helpers.cs(Sheriff.color, $"\nあなたのシェリフは {Sheriff.sheriff?.Data?.PlayerName ?? ""} です");
                 }
             }
             public static bool Prefix(IntroCutscene __instance) {

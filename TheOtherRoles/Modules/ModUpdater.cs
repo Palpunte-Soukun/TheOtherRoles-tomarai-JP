@@ -104,7 +104,6 @@ namespace TheOtherRoles.Modules
             var announcement = $"<size=150%>A new <color=#FC0303>{(isSubmerged ? "Submerged" : "THE OTHER ROLES")}</color> update to {(isSubmerged ? SubmergedUpdate.Tag : TORUpdate.Tag)} is available</size>\n{(isSubmerged ? SubmergedUpdate.Content : TORUpdate.Content)}";
             var mgr = FindObjectOfType<MainMenuManager>(true);
             if (isSubmerged && !SubmergedCompatibility.Loaded) showPopUp = false;
-            if (showPopUp) mgr.StartCoroutine(CoShowAnnouncement(announcement));
             showPopUp = false;
         }
         
@@ -214,7 +213,7 @@ namespace TheOtherRoles.Modules
             UriBuilder uri = new UriBuilder(codeBase);
             string fullname = Uri.UnescapeDataString(uri.Path);
             if (File.Exists(fullname + ".old")) File.Delete(fullname + ".old");
-            if (File.Exists(fullname)) File.Move(fullname, fullname + ".old");
+            File.Move(fullname, fullname + ".old");
 
             await using var responseStream = await res.Content.ReadAsStreamAsync();
             await using var fileStream = File.Create(fullname);

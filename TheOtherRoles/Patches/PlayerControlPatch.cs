@@ -486,7 +486,7 @@ namespace TheOtherRoles.Patches {
                         if (p == Swapper.swapper) playerInfoText = $"{roleNames}" + Helpers.cs(Swapper.color, $" ({Swapper.charges})");
                         if (DestroyableSingleton<TaskPanelBehaviour>.InstanceExists) {
                             TMPro.TextMeshPro tabText = DestroyableSingleton<TaskPanelBehaviour>.Instance.tab.transform.FindChild("TabText_TMP").GetComponent<TMPro.TextMeshPro>();
-                            tabText.SetText($"Tasks {taskInfo}");
+                            tabText.SetText($"タスク {taskInfo}");
                         }
                         meetingInfoText = $"{roleNames} {taskInfo}".Trim();
                     }
@@ -951,15 +951,15 @@ namespace TheOtherRoles.Patches {
                     string msg = "";
 
                     if (isMedicReport) {
-                        msg = $"Body Report: Killed {Math.Round(timeSinceDeath / 1000)}s ago!";
+                        msg = $"死体通報: {Math.Round(timeSinceDeath / 1000)}秒前のキル!";
                     } else if (isDetectiveReport) {
                         if (timeSinceDeath < Detective.reportNameDuration * 1000) {
-                            msg =  $"Body Report: The killer appears to be {deadPlayer.killerIfExisting.Data.PlayerName}!";
+                            msg =  $"死体通報: 犯人は、{deadPlayer.killerIfExisting.Data.PlayerName}だ!";
                         } else if (timeSinceDeath < Detective.reportColorDuration * 1000) {
-                            var typeOfColor = Helpers.isLighterColor(deadPlayer.killerIfExisting.Data.DefaultOutfit.ColorId) ? "lighter" : "darker";
-                            msg =  $"Body Report: The killer appears to be a {typeOfColor} color!";
+                            var typeOfColor = Helpers.isLighterColor(deadPlayer.killerIfExisting.Data.DefaultOutfit.ColorId) ? "明るい" : "暗い";
+                            msg =  $"死体通報: 犯人は、どうやら {typeOfColor} 色のようだ!";
                         } else {
-                            msg = $"Body Report: The corpse is too old to gain information from!";
+                            msg = $"死体通報: 死体が古すぎる...ここから情報を得ることができない!";
                         }
                     }
 

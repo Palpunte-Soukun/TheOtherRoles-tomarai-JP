@@ -74,7 +74,6 @@ namespace TheOtherRoles.Modules {
             });
         }
     }
-
     [HarmonyPatch(typeof(AnnouncementPopUp), nameof(AnnouncementPopUp.UpdateAnnounceText))]
     public static class Announcement
     {

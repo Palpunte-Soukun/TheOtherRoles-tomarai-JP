@@ -148,7 +148,7 @@ namespace TheOtherRoles
             }
 
             // Terminate round
-            if(Input.GetKeyDown(KeyCode.L)) {
+            if(Input.GetKeyDown(KeyCode.L) && AmongUsClient.Instance.AmClient) {
                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ForceEnd, Hazel.SendOption.Reliable, -1);
                 AmongUsClient.Instance.FinishRpcImmediately(writer);
                 RPCProcedure.forceEnd();

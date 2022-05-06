@@ -202,7 +202,7 @@ namespace TheOtherRoles.Patches {
             if (PlayerControl.LocalPlayer != null && MeetingHud.Instance != null && MapOptions.showLighterDarker) {
                 foreach (PlayerVoteArea player in MeetingHud.Instance.playerStates) {
                     var target = Helpers.playerById(player.TargetPlayerId);
-                    if (target != null)  player.NameText.text += $" ({(Helpers.isLighterColor(target.Data.DefaultOutfit.ColorId) ? "L" : "D")})";
+                    if (target != null)  player.NameText.text += $" ({(Helpers.isLighterColor(target.Data.DefaultOutfit.ColorId) ? "明るい" : "暗い")})";
                 }
             }
         }
@@ -307,6 +307,7 @@ namespace TheOtherRoles.Patches {
             // Meeting hide buttons if needed (used for the map usage, because closing the map would show buttons)
             updateSabotageButton(__instance);
             updateUseButton(__instance);
+
 
         }
     }

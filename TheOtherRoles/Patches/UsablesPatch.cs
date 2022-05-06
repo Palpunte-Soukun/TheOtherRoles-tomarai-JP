@@ -213,12 +213,12 @@ namespace TheOtherRoles.Patches {
             // Deactivate emergency button for Swapper
             if (Swapper.swapper != null && Swapper.swapper == PlayerControl.LocalPlayer && !Swapper.canCallEmergency) {
                 roleCanCallEmergency = false;
-                statusText = "The Swapper can't start an emergency meeting";
+                statusText = "スワッパーは会議を開くことができません。";
             }
             // Potentially deactivate emergency button for Jester
             if (Jester.jester != null && Jester.jester == PlayerControl.LocalPlayer && !Jester.canCallEmergency) {
                 roleCanCallEmergency = false;
-                statusText = "The Jester can't start an emergency meeting";
+                statusText = "ジェスターは会議を開くことができません。";
             }
 
             if (!roleCanCallEmergency) {
@@ -235,7 +235,7 @@ namespace TheOtherRoles.Patches {
                 int localRemaining = PlayerControl.LocalPlayer.RemainingEmergencies;
                 int teamRemaining = Mathf.Max(0, maxNumberOfMeetings - meetingsCount);
                 int remaining = Mathf.Min(localRemaining, (Mayor.mayor != null && Mayor.mayor == PlayerControl.LocalPlayer) ? 1 : teamRemaining);
-                __instance.NumberText.text = $"{localRemaining.ToString()} and the ship has {teamRemaining.ToString()}";
+                __instance.NumberText.text = $"あなたは残り {localRemaining.ToString()} 回\nこの船は残り {teamRemaining.ToString()}回開くことができます。";
                 __instance.ButtonActive = remaining > 0;
                 __instance.ClosedLid.gameObject.SetActive(!__instance.ButtonActive);
                 __instance.OpenLid.gameObject.SetActive(__instance.ButtonActive);
@@ -324,7 +324,7 @@ namespace TheOtherRoles.Patches {
                             if (deadPlayer != null && deadPlayer.timeOfDeath != null && k < hackerTexts.Count && hackerTexts[k] != null) {
                                 float timeSinceDeath = ((float)(DateTime.UtcNow - deadPlayer.timeOfDeath).TotalMilliseconds);
                                 hackerTexts[k].gameObject.SetActive(true);
-                                hackerTexts[k].text = Math.Round(timeSinceDeath / 1000) + "s";
+                                hackerTexts[k].text = Math.Round(timeSinceDeath / 1000) + "秒";
                             }
                         }
                     }

@@ -271,45 +271,45 @@ namespace TheOtherRoles.Patches {
             textRenderer.text = "";
 
             if (AdditionalTempData.winCondition == WinCondition.JesterWin) {
-                textRenderer.text = "Jester Wins";
+                textRenderer.text = "ジェスター勝利";
                 textRenderer.color = Jester.color;
             }
             else if (AdditionalTempData.winCondition == WinCondition.ArsonistWin) {
-                textRenderer.text = "Arsonist Wins";
+                textRenderer.text = "アーソニスト勝利";
                 textRenderer.color = Arsonist.color;
             }
             else if (AdditionalTempData.winCondition == WinCondition.VultureWin) {
-                textRenderer.text = "Vulture Wins";
+                textRenderer.text = "バルチャー勝利";
                 textRenderer.color = Vulture.color;
             }
             else if (AdditionalTempData.winCondition == WinCondition.LawyerSoloWin) {
-                textRenderer.text = "Lawyer Wins";
+                textRenderer.text = "弁護士勝利";
                 textRenderer.color = Lawyer.color;
             }
             else if (AdditionalTempData.winCondition == WinCondition.LoversTeamWin) {
-                textRenderer.text = "Lovers And Crewmates Win";
+                textRenderer.text = "ラバーズ&クルーメイト勝利";
                 textRenderer.color = Lovers.color;
                 __instance.BackgroundBar.material.SetColor("_Color", Lovers.color);
             } 
             else if (AdditionalTempData.winCondition == WinCondition.LoversSoloWin) {
-                textRenderer.text = "Lovers Win";
+                textRenderer.text = "ラバーズ勝利";
                 textRenderer.color = Lovers.color;
                 __instance.BackgroundBar.material.SetColor("_Color", Lovers.color);
             }
             else if (AdditionalTempData.winCondition == WinCondition.JackalWin) {
-                textRenderer.text = "Team Jackal Wins";
+                textRenderer.text = "ジャッカル陣営勝利";
                 textRenderer.color = Jackal.color;
             }
             else if (AdditionalTempData.winCondition == WinCondition.MiniLose) {
-                textRenderer.text = "Mini died";
+                textRenderer.text = "ミニが死んだ";
                 textRenderer.color = Mini.color;
             }
 
             foreach (WinCondition cond in AdditionalTempData.additionalWinConditions) {
                 if (cond == WinCondition.AdditionalLawyerBonusWin) {
-                    textRenderer.text += $"\n{Helpers.cs(Lawyer.color, "The Lawyer wins with the client")}";
+                    textRenderer.text += $"\n{Helpers.cs(Lawyer.color, "弁護士が依頼人と一緒に勝利した")}";
                 } else if (cond == WinCondition.AdditionalAlivePursuerWin) {
-                    textRenderer.text += $"\n{Helpers.cs(Pursuer.color, "The Pursuer survived")}";
+                    textRenderer.text += $"\n{Helpers.cs(Pursuer.color, "追跡者が生き延びた")}";
                 }
             }
 
@@ -320,7 +320,7 @@ namespace TheOtherRoles.Patches {
                 roleSummary.transform.localScale = new Vector3(1f, 1f, 1f);
 
                 var roleSummaryText = new StringBuilder();
-                roleSummaryText.AppendLine("Players and roles at the end of the game:");
+                roleSummaryText.AppendLine("試合終了時の役職一覧:");
                 foreach(var data in AdditionalTempData.playerRoles) {
                     var roles = string.Join(" ", data.Roles.Select(x => Helpers.cs(x.color, x.name)));
                     var taskInfo = data.TasksTotal > 0 ? $" - <color=#FAD934FF>({data.TasksCompleted}/{data.TasksTotal})</color>" : "";
