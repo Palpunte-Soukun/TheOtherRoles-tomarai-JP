@@ -18,16 +18,16 @@ namespace TheOtherRoles_tomarai_JP.Modules {
                             if (AmongUsClient.Instance.AmHost && AmongUsClient.Instance.CanBan()) { // checking both just cause
                                 handled = true;
                                 if (!Int32.TryParse(text.Substring(6), out LobbyLimit)) {
-                                    __instance.AddChat(PlayerControl.LocalPlayer, "Invalid Size\nUsage: /size {amount}");
+                                    __instance.AddChat(PlayerControl.LocalPlayer, "無効なサイズです\n使用方法: /size {量}");
                                 } else {
                                     LobbyLimit = Math.Clamp(LobbyLimit, 4, 15);
                                     if (LobbyLimit != PlayerControl.GameOptions.MaxPlayers) {
                                         PlayerControl.GameOptions.MaxPlayers = LobbyLimit;
                                         DestroyableSingleton<GameStartManager>.Instance.LastPlayerCount = LobbyLimit;
                                         PlayerControl.LocalPlayer.RpcSyncSettings(PlayerControl.GameOptions);
-                                        __instance.AddChat(PlayerControl.LocalPlayer, $"Lobby Size changed to {LobbyLimit} players");
+                                        __instance.AddChat(PlayerControl.LocalPlayer, $"ロビーのサイズを {LobbyLimit} 人に変更しました");
                                     } else {
-                                        __instance.AddChat(PlayerControl.LocalPlayer, $"Lobby Size is already {LobbyLimit}");
+                                        __instance.AddChat(PlayerControl.LocalPlayer, $"ロビーのサイズは既に {LobbyLimit} 人です。");
                                     }
                                 }
                             }
