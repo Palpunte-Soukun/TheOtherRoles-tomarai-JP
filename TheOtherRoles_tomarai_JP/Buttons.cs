@@ -495,7 +495,12 @@ namespace TheOtherRoles_tomarai_JP
                 EvilHacker.getButtonSprite(),
                 new Vector3(-1.8f, -0.06f, 0),
                 __instance,
-                KeyCode.F
+                KeyCode.F,
+                true,
+               0f,
+               () => {},
+               PlayerControl.GameOptions.MapId == 3,
+               "アドミン"
             );
 
             // EvilHacker creates madmate button
