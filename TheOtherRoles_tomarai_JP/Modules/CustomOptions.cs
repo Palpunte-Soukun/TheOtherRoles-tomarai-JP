@@ -65,7 +65,7 @@ namespace TheOtherRoles_tomarai_JP {
         }
 
         public static CustomOption Create(int id, CustomOptionType type, string name, bool defaultValue, CustomOption parent = null, bool isHeader = false) {
-            return new CustomOption(id, type, name, new string[]{"オン", "オフ"}, defaultValue ? "オン" : "オフ", parent, isHeader);
+            return new CustomOption(id, type, name, new string[]{"オフ", "オン"}, defaultValue ? "オン" : "オフ", parent, isHeader);
         }
 
         // Static behaviour
@@ -164,19 +164,19 @@ namespace TheOtherRoles_tomarai_JP {
             
             var torSettings = UnityEngine.Object.Instantiate(gameSettings, gameSettings.transform.parent);
             var torMenu = torSettings.transform.FindChild("GameGroup").FindChild("SliderInner").GetComponent<GameOptionsMenu>();
-            torSettings.name = "TOR設定";
+            torSettings.name = "TORSettings";
 
             var impostorSettings = UnityEngine.Object.Instantiate(gameSettings, gameSettings.transform.parent);
             var impostorMenu = impostorSettings.transform.FindChild("GameGroup").FindChild("SliderInner").GetComponent<GameOptionsMenu>();
-            impostorSettings.name = "インポスター役職設定";
+            impostorSettings.name = "ImpostorSettings";
 
             var neutralSettings = UnityEngine.Object.Instantiate(gameSettings, gameSettings.transform.parent);
             var neutralMenu = neutralSettings.transform.FindChild("GameGroup").FindChild("SliderInner").GetComponent<GameOptionsMenu>();
-            neutralSettings.name = "第三陣営役職設定";
+            neutralSettings.name = "NeutralSettings";
 
             var crewmateSettings = UnityEngine.Object.Instantiate(gameSettings, gameSettings.transform.parent);
             var crewmateMenu = crewmateSettings.transform.FindChild("GameGroup").FindChild("SliderInner").GetComponent<GameOptionsMenu>();
-            crewmateSettings.name = "クルー役職設定";
+            crewmateSettings.name = "CrewmateSettings";
 
             var modifierSettings = UnityEngine.Object.Instantiate(gameSettings, gameSettings.transform.parent);
             var modifierMenu = modifierSettings.transform.FindChild("GameGroup").FindChild("SliderInner").GetComponent<GameOptionsMenu>();

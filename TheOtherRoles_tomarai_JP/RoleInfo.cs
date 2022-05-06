@@ -38,12 +38,12 @@ namespace TheOtherRoles_tomarai_JP
         public static RoleInfo janitor = new RoleInfo("ジャニター", Janitor.color, "<color=#FF1919FF>マフィア</color>の一員として 死体を掃除しよう", "死体を掃除しよう", RoleId.Janitor);
         public static RoleInfo morphling = new RoleInfo("モーフィング", Morphling.color, "バレないように変身しよう", "変身しよう", RoleId.Morphling);
         public static RoleInfo camouflager = new RoleInfo("カモフラージャー", Camouflager.color, "カモフラージュして皆殺しにしよう", "他の人を隠そう", RoleId.Camouflager);
-        public static RoleInfo evilHacker = new RoleInfo("EvilHacker", EvilHacker.color, "Hack systems and kill the Crewmates", "Hack to kill the Crewmates", RoleId.EvilHacker);
-        public static RoleInfo vampire = new RoleInfo("ヴァンパイア", Vampire.color, "Kill the Crewmates with your bites", "敵を噛もう", RoleId.Vampire);
-        public static RoleInfo eraser = new RoleInfo("イレイサー", Eraser.color, "Kill the Crewmates and erase their roles", "敵の役職を消そう", RoleId.Eraser);
-        public static RoleInfo trickster = new RoleInfo("トリックスター", Trickster.color, "Use your jack-in-the-boxes to surprise others", "敵を驚かそう", RoleId.Trickster);
-        public static RoleInfo cleaner = new RoleInfo("クリーナー", Cleaner.color, "Kill everyone and leave no traces", "死体を消そう", RoleId.Cleaner);
-        public static RoleInfo warlock = new RoleInfo("ウォーロック", Warlock.color, "Curse other players and 皆殺しにしよう", "呪って皆殺しにしよう", RoleId.Warlock);
+        public static RoleInfo evilHacker = new RoleInfo("イビルハッカー", EvilHacker.color, "システムをハックして皆殺しにしよう", "ハックして皆殺しにしよう", RoleId.EvilHacker);
+        public static RoleInfo vampire = new RoleInfo("ヴァンパイア", Vampire.color, "噛んで皆殺しにしよう", "敵を噛もう", RoleId.Vampire);
+        public static RoleInfo eraser = new RoleInfo("イレイサー", Eraser.color, "役職を消して皆殺しにしよう", "敵の役職を消そう", RoleId.Eraser);
+        public static RoleInfo trickster = new RoleInfo("トリックスター", Trickster.color, "びっくり箱を使って他の人を驚かそう", "敵を驚かそう", RoleId.Trickster);
+        public static RoleInfo cleaner = new RoleInfo("クリーナー", Cleaner.color, "証拠を消しつつ皆殺しにしよう", "死体を消そう", RoleId.Cleaner);
+        public static RoleInfo warlock = new RoleInfo("ウォーロック", Warlock.color, "他人を呪ったりして皆殺しにしよう", "呪って皆殺しにしよう", RoleId.Warlock);
         public static RoleInfo bountyHunter = new RoleInfo("バウンティハンター", BountyHunter.color, "ターゲットをキルしよう", "ターゲットをキルしよう", RoleId.BountyHunter);
         public static RoleInfo detective = new RoleInfo("ディテクティブ", Detective.color, "足跡で<color=#FF1919FF>インポスター</color>を探し出そう", "足跡を調べよう", RoleId.Detective);
         public static RoleInfo timeMaster = new RoleInfo("タイムマスター", TimeMaster.color, "タイムシールドで自分を守ろう", "タイムシールドを使おう", RoleId.TimeMaster);
@@ -63,12 +63,12 @@ namespace TheOtherRoles_tomarai_JP
         public static RoleInfo badGuesser = new RoleInfo("イビルゲッサー", Palette.ImpostorRed, "推理して撃ち抜け", "推理して撃ち抜け", RoleId.EvilGuesser);
         public static RoleInfo vulture = new RoleInfo("バルチャー", Vulture.color, "死体を食べて勝利しよう", "死体を食べよう", RoleId.Vulture, true);
         public static RoleInfo medium = new RoleInfo("ミーディアム", Medium.color, "死人に質問して情報を手に入れよう", "死人に質問しよう", RoleId.Medium);
-        public static RoleInfo madmate = new RoleInfo("Madmate", Madmate.color, "Help the <color=#FF1919FF>Impostors</color>", "Help the Impostors", RoleId.Madmate);
+        public static RoleInfo madmate = new RoleInfo("マッドメイト", Madmate.color, "<color=#FF1919FF>インポスター</color>の手助けをしよう", "インポスターの手助けをしよう", RoleId.Madmate);
         public static RoleInfo lawyer = new RoleInfo("弁護士", Lawyer.color, "依頼人を守ろう", "依頼人を守ろう", RoleId.Lawyer, true);
-        public static RoleInfo pursuer = new RoleInfo("追跡者", Pursuer.color, "Blank the インポスター", "Blank the インポスター", RoleId.Pursuer);
+        public static RoleInfo pursuer = new RoleInfo("追跡者", Pursuer.color, "インポスターのキルをなかったことにしょう", "インポスターのキルをなかったことにしょう", RoleId.Pursuer);
         public static RoleInfo impostor = new RoleInfo("インポスター", Palette.ImpostorRed, Helpers.cs(Palette.ImpostorRed, "サボを活用して皆殺しにしよう"), "サボを活用して皆殺しにしよう", RoleId.Impostor);
         public static RoleInfo crewmate = new RoleInfo("クルー", Color.white, "インポスターを探し出そう", "インポスターを探し出そう", RoleId.Crewmate);
-        public static RoleInfo witch = new RoleInfo("ウィッチ", Witch.color, "Cast a spell upon your foes", "Cast a spell upon your foes", RoleId.Witch);
+        public static RoleInfo witch = new RoleInfo("ウィッチ", Witch.color, "敵に魔法をかけよう", "敵に魔法をかけよう", RoleId.Witch);
         public static RoleInfo ninja = new RoleInfo("ニンジャ", Ninja.color, "敵を驚かせて暗殺しよう", "敵を驚かせて暗殺しよう", RoleId.Ninja);
 
 

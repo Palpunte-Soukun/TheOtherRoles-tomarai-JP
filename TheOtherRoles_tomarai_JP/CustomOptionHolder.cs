@@ -333,8 +333,8 @@ namespace TheOtherRoles_tomarai_JP {
             modifiersCountMax = CustomOption.Create(307, Types.General, cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "最大属性数"), 0f, 0f, 15f, 1f);
 
             // custom options
-            adminTimer = CustomOption.Create(999, Types.General, "アドミン制限時間", 10f, 0f, 120f, 1f);
             enabledAdminTimer = CustomOption.Create(998, Types.General, "アドミン制限時間を有効にする", true);
+            adminTimer = CustomOption.Create(999, Types.General, "アドミン制限時間", 10f, 0f, 120f, 1f, enabledAdminTimer);
             heliSabotageSystemTimeLimit = CustomOption.Create(996, Types.General, "衝突コースを回避するサボタージュの制限時間", 90f, 1f, 120f, 5f);
             hideTaskOverlayOnSabMap = CustomOption.Create(997, Types.General, "サボタージュマップ上からタスク表示を消す", false);
 
@@ -459,7 +459,7 @@ namespace TheOtherRoles_tomarai_JP {
             sheriffCooldown = CustomOption.Create(101, Types.Crewmate, "シェリフのキルクール", 30f, 10f, 60f, 2.5f, sheriffSpawnRate);
             sheriffCanKillNeutrals = CustomOption.Create(102, Types.Crewmate, "第三陣営をキルできる", false, sheriffSpawnRate);
             // custom options
-            sheriffNumberOfShots = CustomOption.Create(920, Types.Crewmate, "Sheriff Number Of Shots", 1f, 1f, 15, 1f, sheriffSpawnRate);
+            sheriffNumberOfShots = CustomOption.Create(920, Types.Crewmate, "シェリフのキル可能回数", 1f, 1f, 15, 1f, sheriffSpawnRate);
             deputySpawnRate = CustomOption.Create(103, Types.Crewmate, "デピュティを持っている", rates, sheriffSpawnRate);
             deputyNumberOfHandcuffs = CustomOption.Create(104, Types.Crewmate, "デピュティが掛けられる手錠の数", 3f, 1f, 10f, 1f, deputySpawnRate);
             deputyHandcuffCooldown = CustomOption.Create(105, Types.Crewmate, "手錠クールダウン", 30f, 10f, 60f, 2.5f, deputySpawnRate);
