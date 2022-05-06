@@ -65,7 +65,7 @@ namespace TheOtherRoles {
         }
 
         public static CustomOption Create(int id, CustomOptionType type, string name, bool defaultValue, CustomOption parent = null, bool isHeader = false) {
-            return new CustomOption(id, type, name, new string[]{"Off", "On"}, defaultValue ? "On" : "Off", parent, isHeader);
+            return new CustomOption(id, type, name, new string[]{"オン", "オフ"}, defaultValue ? "オン" : "オフ", parent, isHeader);
         }
 
         // Static behaviour
@@ -489,28 +489,28 @@ namespace TheOtherRoles {
                     sb.AppendLine(Helpers.cs(c, $"{option.name}: {option.selections[option.selection].ToString()}"));
                 } else {
                     if (option == CustomOptionHolder.crewmateRolesCountMin) {
-                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "Crewmate Roles");
+                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "クルー役職");
                         var min = CustomOptionHolder.crewmateRolesCountMin.getSelection();
                         var max = CustomOptionHolder.crewmateRolesCountMax.getSelection();
                         if (min > max) min = max;
                         var optionValue = (min == max) ? $"{max}" : $"{min} - {max}";
                         sb.AppendLine($"{optionName}: {optionValue}");
                     } else if (option == CustomOptionHolder.neutralRolesCountMin) {
-                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "Neutral Roles");
+                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "第三陣営役職");
                         var min = CustomOptionHolder.neutralRolesCountMin.getSelection();
                         var max = CustomOptionHolder.neutralRolesCountMax.getSelection();
                         if (min > max) min = max;
                         var optionValue = (min == max) ? $"{max}" : $"{min} - {max}";
                         sb.AppendLine($"{optionName}: {optionValue}");
                     } else if (option == CustomOptionHolder.impostorRolesCountMin) {
-                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "Impostor Roles");
+                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "インポスター役職");
                         var min = CustomOptionHolder.impostorRolesCountMin.getSelection();
                         var max = CustomOptionHolder.impostorRolesCountMax.getSelection();
                         if (min > max) min = max;
                         var optionValue = (min == max) ? $"{max}" : $"{min} - {max}";
                         sb.AppendLine($"{optionName}: {optionValue}");
                     } else if (option == CustomOptionHolder.modifiersCountMin) {
-                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "Modifiers");
+                        var optionName = CustomOptionHolder.cs(new Color(204f / 255f, 204f / 255f, 0, 1f), "属性");
                         var min = CustomOptionHolder.modifiersCountMin.getSelection();
                         var max = CustomOptionHolder.modifiersCountMax.getSelection();
                         if (min > max) min = max;
@@ -529,33 +529,33 @@ namespace TheOtherRoles {
         private static void Postfix(ref string __result)
         {
             int counter = TheOtherRolesPlugin.optionsPage;
-            string hudString = counter != 0 ? Helpers.cs(DateTime.Now.Second % 2 == 0 ? Color.white : Color.red, "(Use scroll wheel if necessary)\n\n") : "";
+            string hudString = counter != 0 ? Helpers.cs(DateTime.Now.Second % 2 == 0 ? Color.white : Color.red, "(必要であれば、マウスホイールをスクロールしてください)\n\n") : "";
 
             switch (counter) {
                 case 0:
-                    hudString += "Page 1: Vanilla Settings \n\n" + __result;
+                    hudString += "ページ 1: バニラの設定 \n\n" + __result;
                     break;
                 case 1:
-                    hudString += "Page 2: The Other Roles Settings \n" + buildOptionsOfType(CustomOption.CustomOptionType.General, false);
+                    hudString += "ページ 2: The Other Rolesの設定 \n" + buildOptionsOfType(CustomOption.CustomOptionType.General, false);
                     break;
                 case 2:
-                    hudString += "Page 3: Role and Modifier Rates \n" + buildRoleOptions();
+                    hudString += "ページ 3: 役職と属性のレート \n" + buildRoleOptions();
                     break;
                 case 3:
-                    hudString += "Page 4: Impostor Role Settings \n" + buildOptionsOfType(CustomOption.CustomOptionType.Impostor, false);
+                    hudString += "ページ 4: インポスター役職設定 \n" + buildOptionsOfType(CustomOption.CustomOptionType.Impostor, false);
                     break;
                 case 4:
-                    hudString += "Page 5: Neutral Role Settings \n" + buildOptionsOfType(CustomOption.CustomOptionType.Neutral, false);
+                    hudString += "ページ 5: 第三陣営役職設定 \n" + buildOptionsOfType(CustomOption.CustomOptionType.Neutral, false);
                     break;
                 case 5:
-                    hudString += "Page 6: Crewmate Role Settings \n" + buildOptionsOfType(CustomOption.CustomOptionType.Crewmate, false);
+                    hudString += "ページ 6: クルー役職設定 \n" + buildOptionsOfType(CustomOption.CustomOptionType.Crewmate, false);
                     break;
                 case 6:
-                    hudString += "Page 7: Modifier Settings \n" + buildOptionsOfType(CustomOption.CustomOptionType.Modifier, false);
+                    hudString += "ページ 7: 属性設定 \n" + buildOptionsOfType(CustomOption.CustomOptionType.Modifier, false);
                     break;
             }
 
-            hudString += $"\n Press TAB or Page Number for more... ({counter+1}/7)";
+            hudString += $"\n Tabキーを押すか、数字キーを押してページを変更することができます... ({counter+1}/7)";
             __result = hudString;
         }
     }
@@ -635,7 +635,7 @@ namespace TheOtherRoles {
                 LastPosition = new Vector3(MinX, MinY);
                 lastAspect = aspect;
                 setLastPosition = true;
-                if (Scroller != null) Scroller.ContentXBounds = new FloatRange(MinX, MinX);                
+                if (Scroller != null) Scroller.ContentXBounds = new FloatRange(MinX, MinX);
             }
 
             CreateScroller(__instance);
