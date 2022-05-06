@@ -399,6 +399,7 @@ namespace TheOtherRoles_tomarai_JP {
             ninjaKnowsTargetLocation = CustomOption.Create(382, Types.Impostor, "ニンジャがターゲットの位置を知っている", true, ninjaSpawnRate);
             ninjaTraceTime = CustomOption.Create(383, Types.Impostor, "追跡時間", 5f, 1f, 20f, 0.5f, ninjaSpawnRate);
             ninjaTraceColorTime = CustomOption.Create(384, Types.Impostor, "トレースカラーが消えるまでの時間", 2f, 0f, 20f, 0.5f, ninjaSpawnRate);
+
             guesserSpawnRate = CustomOption.Create(310, Types.Neutral, cs(Guesser.color, "ゲッサー"), rates, null, true);
             guesserIsImpGuesserRate = CustomOption.Create(311, Types.Neutral, "イビルゲッサーになる確率", rates, guesserSpawnRate);
             guesserNumberOfShots = CustomOption.Create(312, Types.Neutral, "弾数", 2f, 1f, 15f, 1f, guesserSpawnRate);
