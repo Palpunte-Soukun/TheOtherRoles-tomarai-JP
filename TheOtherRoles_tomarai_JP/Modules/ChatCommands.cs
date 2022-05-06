@@ -52,11 +52,11 @@ namespace TheOtherRoles_tomarai_JP.Modules {
                         handled = true;
                         int col;
                         if (!Int32.TryParse(text.Substring(7), out col)) {
-                            __instance.AddChat(PlayerControl.LocalPlayer, "Unable to parse color id\nUsage: /color {id}");
+                            __instance.AddChat(PlayerControl.LocalPlayer, "カラーIDの解析ができません\n使用方法: /color {id}");
                         }
                         col = Math.Clamp(col, 0, Palette.PlayerColors.Length - 1);
                         PlayerControl.LocalPlayer.SetColor(col);
-                        __instance.AddChat(PlayerControl.LocalPlayer, "Changed color succesfully");;
+                        __instance.AddChat(PlayerControl.LocalPlayer, "カラー変えに成功しました");;
                     } 
                 }
 
