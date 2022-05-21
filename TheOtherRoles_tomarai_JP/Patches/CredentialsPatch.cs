@@ -62,7 +62,7 @@ GitHub寄稿者: Gendelo, Alex2911, amsyarasyiq, MaximeGillot, Psynomit</size>";
             static void Postfix(PingTracker __instance){
                 __instance.text.alignment = TMPro.TextAlignmentOptions.TopRight;
                 if (AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started) {
-                    __instance.text.text = $"<size=130%><color=#ff351f>TheOtherRoles_tomarai_JP</color></size> v{TheOtherRoles_tomarai_JPPlugin.Version.ToString()}\n" + __instance.text.text;
+                    __instance.text.text = $"<size=130%><color=#ff351f>TheOtherRoles tomarai JP</color></size> v{TheOtherRoles_tomarai_JPPlugin.Version.ToString()}\n" + __instance.text.text;
                     if (PlayerControl.LocalPlayer.Data.IsDead || (!(PlayerControl.LocalPlayer == null) && (PlayerControl.LocalPlayer == Lovers.lover1 || PlayerControl.LocalPlayer == Lovers.lover2))) {
                         __instance.transform.localPosition = new Vector3(3.45f, __instance.transform.localPosition.y, __instance.transform.localPosition.z);
                     } else {
