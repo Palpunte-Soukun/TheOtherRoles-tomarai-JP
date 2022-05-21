@@ -235,7 +235,7 @@ namespace TheOtherRoles_tomarai_JP.Patches {
                 int localRemaining = PlayerControl.LocalPlayer.RemainingEmergencies;
                 int teamRemaining = Mathf.Max(0, maxNumberOfMeetings - meetingsCount);
                 int remaining = Mathf.Min(localRemaining, (Mayor.mayor != null && Mayor.mayor == PlayerControl.LocalPlayer) ? 1 : teamRemaining);
-                __instance.NumberText.text = $"あなたは残り {localRemaining.ToString()} 回\nこの船は残り {teamRemaining.ToString()}回開くことができます。";
+                __instance.NumberText.text = $"<size=1.0>あなたは残り {localRemaining.ToString()} 回\nこの船は残り {teamRemaining.ToString()}回開くことができます。";
                 __instance.ButtonActive = remaining > 0;
                 __instance.ClosedLid.gameObject.SetActive(!__instance.ButtonActive);
                 __instance.OpenLid.gameObject.SetActive(__instance.ButtonActive);
