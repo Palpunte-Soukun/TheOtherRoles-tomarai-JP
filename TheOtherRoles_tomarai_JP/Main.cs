@@ -147,12 +147,6 @@ namespace TheOtherRoles_tomarai_JP
                 GameData.Instance.RpcSetTasks(playerControl.PlayerId, new byte[0]);
             }
 
-            // Terminate round
-            if(Input.GetKeyDown(KeyCode.L) && AmongUsClient.Instance.AmClient) {
-                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.ForceEnd, Hazel.SendOption.Reliable, -1);
-                AmongUsClient.Instance.FinishRpcImmediately(writer);
-                RPCProcedure.forceEnd();
-            }
         }
 
         public static string RandomString(int length)
