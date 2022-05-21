@@ -57,7 +57,7 @@ namespace TheOtherRoles_tomarai_JP.Patches {
                     }
                 }
             }
-            if (PlayerControl.LocalPlayer.Data.Role.IsImpostor) {
+            if (CanPlayerSeeImpostorName()) {
                 List<PlayerControl> impostors = PlayerControl.AllPlayerControls.ToArray().ToList();
                 impostors.RemoveAll(x => !x.Data.Role.IsImpostor);
                 foreach (PlayerControl player in impostors)
